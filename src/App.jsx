@@ -185,12 +185,12 @@ const App = () => {
           />
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-[1400px] mx-auto relative z-10 grid lg:grid-cols-2 gap-12 items-center w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-left"
+            className="text-left flex flex-col items-start"
           >
             {/* Niche Selector */}
             <div className="flex gap-2 mb-10 p-1 bg-white/5 rounded-2xl w-fit border border-white/5">
@@ -219,7 +219,7 @@ const App = () => {
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.5 }}
               >
-                <h1 className="text-5xl md:text-[80px] font-black tracking-tight mb-8 leading-[0.9] text-white">
+                <h1 className="text-6xl md:text-[95px] font-black tracking-tight mb-8 leading-[0.85] text-white">
                   {niches[activeNiche].title} <br /> 
                   <span className="relative inline-block text-blue-500">
                     {niches[activeNiche].highlight}
@@ -257,9 +257,9 @@ const App = () => {
             initial={{ opacity: 0, scale: 0.8, rotateY: 20 }}
             animate={{ opacity: 1, scale: 1, rotateY: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="relative hidden lg:block"
+            className="relative hidden lg:block justify-self-end"
           >
-            <div className="relative w-[320px] h-[640px] bg-[#111] rounded-[3rem] border-[8px] border-[#222] shadow-[0_0_100px_rgba(37,99,235,0.2)] overflow-hidden mx-auto">
+            <div className="relative w-[380px] h-[760px] bg-[#111] rounded-[3.5rem] border-[10px] border-[#222] shadow-[0_0_100px_rgba(37,99,235,0.2)] overflow-hidden mx-auto">
               {/* Phone Content */}
               <div className="absolute top-0 left-0 w-full h-full bg-[#050505] p-6 pt-12">
                 <div className="w-20 h-1 bg-white/10 rounded-full mx-auto mb-10" />
