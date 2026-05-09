@@ -35,7 +35,7 @@ const Hero = () => {
         console.error("Erro ao enviar notificação:", error);
       }
 
-      const phoneNumber = "5511999999999";
+      const phoneNumber = "5544988601067";
       const message = encodeURIComponent(`Olá! Gostaria de saber mais sobre o SeeK. Meu e-mail é: ${email}`);
       window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
       setSubmitted(true);

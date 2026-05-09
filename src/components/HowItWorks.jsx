@@ -94,7 +94,7 @@ const HowItWorks = () => {
   };
 
   const handleWhatsAppClick = () => {
-    const phoneNumber = "5511999999999";
+    const phoneNumber = "5544988601067";
     const message = encodeURIComponent("Olá! Vi como o SeeK funciona e gostaria de implementar no meu negócio.");
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };

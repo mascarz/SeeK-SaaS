@@ -97,10 +97,10 @@ const Navbar = () => {
   };
 
   const handleWhatsAppClick = () => {
-    const phoneNumber = "5511999999999";
-    const message = encodeURIComponent("Olá! Vim através do site SeeK e gostaria de começar meu teste grátis.");
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
-  };
+     const phoneNumber = "5544988601067";
+     const message = encodeURIComponent("Olá! Vim através do site SeeK e gostaria de começar meu teste grátis.");
+     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+   };
 
   return (
     <>

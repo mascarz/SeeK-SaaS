@@ -99,10 +99,10 @@ const Pricing = () => {
   });
 
   const handleSubscribe = (plan) => {
-    const phoneNumber = "5511999999999"; // Substitua pelo seu número real
-    const message = encodeURIComponent(`Olá! Gostaria de assinar o plano ${plan.name} (${isAnnual ? 'Anual' : 'Mensal'}) da SeeK.`);
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
-  };
+     const phoneNumber = "5544988601067"; // Substitua pelo seu número real
+     const message = encodeURIComponent(`Olá! Gostaria de assinar o plano ${plan.name} (${isAnnual ? 'Anual' : 'Mensal'}) da SeeK.`);
+     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+   };
 
   return (
     <section id="precos" style={sectionStyle}>
