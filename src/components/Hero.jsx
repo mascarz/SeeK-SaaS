@@ -14,9 +14,32 @@ const Hero = () => {
     { id: 'varejo', label: 'Varejo 🛒', headline: 'Seu Negócio Atende Enquanto Você ', highlight: 'Dorme.' },
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email) setSubmitted(true);
+    if (email) {
+      // Notificação por e-mail via FormSubmit (Silencioso)
+      try {
+        fetch("https://formsubmit.co/ajax/kauan.dev.full@gmail.com", {
+          method: "POST",
+          headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            email: email,
+            mensagem: "Novo lead interessado em criar site!",
+            origem: "Hero Section - SeeK Landing Page"
+          })
+        });
+      } catch (error) {
+        console.error("Erro ao enviar notificação:", error);
+      }
+
+      const phoneNumber = "5511999999999";
+      const message = encodeURIComponent(`Olá! Gostaria de saber mais sobre o SeeK. Meu e-mail é: ${email}`);
+      window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+      setSubmitted(true);
+    }
   };
 
   const currentTab = tabs.find(t => t.id === activeTab);

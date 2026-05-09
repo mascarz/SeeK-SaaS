@@ -6,9 +6,32 @@ const FinalCTA = () => {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email) setSubmitted(true);
+    if (email) {
+      // Notificação por e-mail via FormSubmit
+      try {
+        fetch("https://formsubmit.co/ajax/kauan.dev.full@gmail.com", {
+          method: "POST",
+          headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            email: email,
+            mensagem: "Novo lead interessado (CTA Final)",
+            origem: "Rodapé - SeeK Landing Page"
+          })
+        });
+      } catch (error) {
+        console.error("Erro ao enviar e-mail:", error);
+      }
+
+      const phoneNumber = "5511999999999";
+      const message = encodeURIComponent(`Olá! Gostaria de criar meu site no SeeK. Meu e-mail é: ${email}`);
+      window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+      setSubmitted(true);
+    }
   };
 
   const sectionStyle = {

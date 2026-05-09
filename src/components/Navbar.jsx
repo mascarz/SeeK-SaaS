@@ -96,6 +96,12 @@ const Navbar = () => {
     transition: 'opacity 0.3s ease',
   };
 
+  const handleWhatsAppClick = () => {
+    const phoneNumber = "5511999999999";
+    const message = encodeURIComponent("Olá! Vim através do site SeeK e gostaria de começar meu teste grátis.");
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  };
+
   return (
     <>
       <nav style={navStyle}>
@@ -114,6 +120,7 @@ const Navbar = () => {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
           <button 
+            onClick={handleWhatsAppClick}
             className="nav-cta-desktop"
             style={{ ...ctaButtonStyle, display: 'none' }}
             onMouseEnter={(e) => {
@@ -150,7 +157,13 @@ const Navbar = () => {
         <a href="#como-funciona" onClick={() => setMobileMenuOpen(false)} style={{ ...linkStyle, fontSize: '24px', color: '#fff' }}>Como Funciona</a>
         <a href="#resultados" onClick={() => setMobileMenuOpen(false)} style={{ ...linkStyle, fontSize: '24px', color: '#fff' }}>Resultados</a>
         <a href="#precos" onClick={() => setMobileMenuOpen(false)} style={{ ...linkStyle, fontSize: '24px', color: '#fff' }}>Preços</a>
-        <button style={{ ...ctaButtonStyle, fontSize: '18px', padding: '16px 32px' }}>
+        <button 
+          onClick={() => {
+            setMobileMenuOpen(false);
+            handleWhatsAppClick();
+          }}
+          style={{ ...ctaButtonStyle, fontSize: '18px', padding: '16px 32px' }}
+        >
           <Zap size={20} fill="currentColor" />
           Começar Grátis
         </button>

@@ -93,6 +93,12 @@ const HowItWorks = () => {
     width: 'fit-content',
   };
 
+  const handleWhatsAppClick = () => {
+    const phoneNumber = "5511999999999";
+    const message = encodeURIComponent("Olá! Vi como o SeeK funciona e gostaria de implementar no meu negócio.");
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  };
+
   return (
     <section id="como-funciona" style={sectionStyle}>
       <span style={{ ...TYPOGRAPHY.label, color: COLORS.indigo, marginBottom: '16px' }}>Assistido, Não Abandonado</span>
@@ -115,7 +121,12 @@ const HowItWorks = () => {
               </div>
             </div>
           ))}
-          <button style={ctaButtonStyle} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
+          <button 
+            onClick={handleWhatsAppClick}
+            style={ctaButtonStyle} 
+            onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'} 
+            onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+          >
             Quero o SeeK no meu negócio →
           </button>
         </div>

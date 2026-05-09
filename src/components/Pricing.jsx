@@ -8,13 +8,13 @@ const Pricing = () => {
   const plans = [
     {
       name: 'Start',
-      price: isAnnual ? '77' : '97',
+      price: isAnnual ? '39' : '49',
       color: COLORS.bluePrimary,
       features: ['1 negócio', 'Cardápio/Agenda', 'IA Básica', '150 pedidos/mês', 'Suporte 24h', 'Setup incluso'],
     },
     {
       name: 'Business Pro',
-      price: isAnnual ? '157' : '197',
+      price: isAnnual ? '69' : '89',
       color: COLORS.indigo,
       featured: true,
       features: ['3 unidades', 'IA Avançada Upsell', 'CRM Auto', 'Pedidos Ilimitados', 'Suporte 24/7', 'Setup+Treinamento', 'Relatórios', 'Ajustes Mensais'],
@@ -98,6 +98,12 @@ const Pricing = () => {
     transition: 'transform 0.2s ease',
   });
 
+  const handleSubscribe = (plan) => {
+    const phoneNumber = "5511999999999"; // Substitua pelo seu número real
+    const message = encodeURIComponent(`Olá! Gostaria de assinar o plano ${plan.name} (${isAnnual ? 'Anual' : 'Mensal'}) da SeeK.`);
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  };
+
   return (
     <section id="precos" style={sectionStyle}>
       <span style={{ ...TYPOGRAPHY.label, color: COLORS.indigo, marginBottom: '16px' }}>Planos e Preços</span>
@@ -141,7 +147,12 @@ const Pricing = () => {
               ))}
             </div>
 
-            <button style={ctaButtonStyle(plan.featured, plan.color)} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
+            <button 
+              onClick={() => handleSubscribe(plan)}
+              style={ctaButtonStyle(plan.featured, plan.color)} 
+              onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'} 
+              onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+            >
               {plan.price === 'Sob consulta' ? 'Falar com Consultor' : 'Começar Agora'}
             </button>
           </div>
