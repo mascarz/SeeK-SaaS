@@ -44,6 +44,59 @@ const Hero = () => {
 
   const currentTab = tabs.find(t => t.id === activeTab);
 
+  const mockupContent = {
+    lanchonete: {
+      name: 'Burguer King',
+      status: 'Aberto agora',
+      items: [
+        { name: 'Classic Burger', price: 'R$ 34,90', icon: '🍔' },
+        { name: 'Batata Rústica', price: 'R$ 18,00', icon: '🍟' },
+        { name: 'Milkshake', price: 'R$ 22,50', icon: '🥤' },
+      ],
+      total: 'R$ 75,40',
+      buttonText: 'Confirmar Pedido →',
+      iaMessage: '"Ótima escolha! Gostaria de adicionar um Brownie por apenas R$ 9,90?"'
+    },
+    salao: {
+      name: 'Studio Hair',
+      status: 'Aberto para Agendamento',
+      items: [
+        { name: 'Corte Masculino', price: '10:30', icon: '✂️' },
+        { name: 'Barba Premium', price: '14:00', icon: '🪒' },
+        { name: 'Luzes / Mechas', price: '16:30', icon: '✨' },
+      ],
+      total: '3 Horários Livres',
+      buttonText: 'Agendar Horário →',
+      iaMessage: '"Olá! Vi que você buscou por Corte. Temos uma vaga para hoje às 15:30, quer reservar?"'
+    },
+    clinica: {
+      name: 'Clínica Vida',
+      status: 'Consultas Disponíveis',
+      items: [
+        { name: 'Consulta Geral', price: 'Segunda', icon: '🩺' },
+        { name: 'Exame de Sangue', price: 'Terça', icon: '🧪' },
+        { name: 'Retorno Médico', price: 'Quinta', icon: '📋' },
+      ],
+      total: 'Próxima vaga: Amanhã',
+      buttonText: 'Marcar Consulta →',
+      iaMessage: '"Deseja agendar seu retorno? O Dr. Marcos tem disponibilidade para quinta às 09:00."'
+    },
+    varejo: {
+      name: 'Eco Shop',
+      status: 'Loja Online 24h',
+      items: [
+        { name: 'Camiseta Orgânica', price: 'R$ 89,90', icon: '👕' },
+        { name: 'Calça Reciclada', price: 'R$ 149,00', icon: '👖' },
+        { name: 'Tênis Sustentável', price: 'R$ 299,00', icon: '👟' },
+      ],
+      total: 'Frete Grátis Ativo',
+      buttonText: 'Comprar Agora →',
+      iaMessage: '"Este tênis combina muito com a camiseta! Quer levar o kit com 15% de desconto?"'
+    }
+  };
+
+  const currentMockup = mockupContent[activeTab];
+
   const sectionStyle = {
     minHeight: '100vh',
     padding: `120px ${LAYOUT.paddingX} 80px`,
@@ -259,9 +312,9 @@ const Hero = () => {
                       {activeTab === 'lanchonete' ? '🍔' : activeTab === 'salao' ? '💆' : activeTab === 'clinica' ? '🏥' : '🛒'}
                     </div>
                     <div>
-                      <div style={{ fontWeight: 700, fontSize: '14px' }}>{activeTab === 'lanchonete' ? 'Burguer King' : 'Studio Hair' }</div>
+                      <div style={{ fontWeight: 700, fontSize: '14px' }}>{currentMockup.name}</div>
                       <div style={{ fontSize: '12px', color: COLORS.success, display: 'flex', alignItems: 'center', gap: '4px' }}>
-                        <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: COLORS.success }} /> Aberto agora
+                        <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: COLORS.success }} /> {currentMockup.status}
                       </div>
                     </div>
                   </div>
@@ -270,11 +323,7 @@ const Hero = () => {
 
               {/* Phone Content */}
               <div style={{ flex: 1, padding: '20px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                {[
-                  { name: 'Classic Burger', price: 'R$ 34,90', icon: '🍔' },
-                  { name: 'Batata Rústica', price: 'R$ 18,00', icon: '🍟' },
-                  { name: 'Milkshake', price: 'R$ 22,50', icon: '🥤' },
-                ].map((item, i) => (
+                {currentMockup.items.map((item, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px', borderRadius: '12px', background: 'rgba(255,255,255,0.03)' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <span style={{ fontSize: '20px' }}>{item.icon}</span>
@@ -286,10 +335,10 @@ const Hero = () => {
 
                 <div style={{ marginTop: 'auto', paddingTop: '20px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
-                    <span style={{ color: COLORS.textSecondary }}>Total</span>
-                    <span style={{ fontWeight: 700 }}>R$ 75,40</span>
+                    <span style={{ color: COLORS.textSecondary }}>{activeTab === 'lanchonete' || activeTab === 'varejo' ? 'Total' : 'Status'}</span>
+                    <span style={{ fontWeight: 700 }}>{currentMockup.total}</span>
                   </div>
-                  <button style={{ ...submitButtonStyle, width: '100%', justifyContent: 'center' }}>Confirmar Pedido →</button>
+                  <button style={{ ...submitButtonStyle, width: '100%', justifyContent: 'center' }}>{currentMockup.buttonText}</button>
                 </div>
               </div>
 
@@ -300,7 +349,7 @@ const Hero = () => {
                   <span style={{ fontSize: '10px', fontWeight: 700, color: COLORS.bluePrimary, textTransform: 'uppercase' }}>IA Assistida · Online</span>
                 </div>
                 <p style={{ fontSize: '12px', color: COLORS.textSecondary, lineHeight: 1.4 }}>
-                  "Ótima escolha! Gostaria de adicionar um Brownie por apenas R$ 9,90?"
+                  {currentMockup.iaMessage}
                 </p>
               </div>
             </div>
