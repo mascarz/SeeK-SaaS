@@ -14,7 +14,7 @@ import Footer from './components/Footer';
 
 const App = () => {
   return (
-    <div style={{ backgroundColor: '#070B14', color: '#FFFFFF', minHeight: '100vh' }}>
+    <div style={{ backgroundColor: '#000000', color: '#FFFFFF', minHeight: '100vh' }}>
       <Navbar />
       <Hero />
       <Logos />

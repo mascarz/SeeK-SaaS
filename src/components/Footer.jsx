@@ -4,47 +4,50 @@ import { COLORS, TYPOGRAPHY, LAYOUT } from '../constants';
 
 const Footer = () => {
   const footerStyle = {
-    padding: `80px ${LAYOUT.paddingX} 40px`,
-    background: '#050810',
-    borderTop: '1px solid rgba(255, 255, 255, 0.05)',
+    padding: `100px ${LAYOUT.paddingX} 60px`,
+    background: '#000',
+    borderTop: `1px solid ${COLORS.borderCard}`,
   };
 
   const gridStyle = {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-    gap: '48px',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+    gap: '64px',
     maxWidth: LAYOUT.maxWidth,
     margin: '0 auto',
-    marginBottom: '80px',
+    marginBottom: '100px',
   };
 
   const logoBoxStyle = {
-    width: '40px',
-    height: '40px',
-    background: COLORS.gradientPrimary,
-    borderRadius: '10px',
+    width: '36px',
+    height: '36px',
+    background: COLORS.brandPrimary,
+    borderRadius: '8px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: '24px',
+    fontSize: '20px',
     fontWeight: 900,
-    color: '#fff',
-    marginBottom: '20px',
+    color: '#000',
+    marginBottom: '24px',
   };
 
   const linkStyle = {
     display: 'block',
     color: COLORS.textSecondary,
-    fontSize: '15px',
-    marginBottom: '12px',
-    transition: 'color 0.2s ease',
+    fontSize: '14px',
+    fontWeight: 500,
+    marginBottom: '16px',
+    textDecoration: 'none',
+    transition: 'all 0.2s ease',
   };
 
   const socialIconStyle = {
-    width: '40px',
-    height: '40px',
+    width: '44px',
+    height: '44px',
     borderRadius: '12px',
-    border: '1px solid rgba(255, 255, 255, 0.05)',
+    background: 'rgba(255,255,255,0.03)',
+    border: '1px solid rgba(255, 255, 255, 0.08)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -56,26 +59,28 @@ const Footer = () => {
     <footer style={footerStyle}>
       <div style={gridStyle}>
         <div style={{ gridColumn: 'span 1.5' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
             <div style={logoBoxStyle}>S</div>
-            <span style={{ fontWeight: 900, fontSize: '24px' }}>See<span style={TYPOGRAPHY.textGradient}>K</span></span>
+            <span style={{ fontWeight: 900, fontSize: '26px', letterSpacing: '-0.04em' }}>See<span style={{ color: COLORS.brandPrimary }}>K</span></span>
           </div>
-          <p style={{ ...TYPOGRAPHY.body, color: COLORS.textSecondary, maxWidth: '280px', marginBottom: '24px' }}>
-            A plataforma que transforma seu pequeno negócio em uma operação de alta performance com IA.
+          <p style={{ ...TYPOGRAPHY.body, color: COLORS.textSecondary, maxWidth: '320px', marginBottom: '32px', fontSize: '15px' }}>
+            Liderando a transformação digital com IA generativa e infraestrutura de escala global para empresas de alto crescimento.
           </p>
-          <div style={{ display: 'flex', gap: '12px' }}>
+          <div style={{ display: 'flex', gap: '16px' }}>
             {[Instagram, MessageCircle, Mail].map((Icon, i) => (
               <a 
                 key={i} 
                 href="#" 
                 style={socialIconStyle}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(99, 102, 241, 0.5)';
-                  e.currentTarget.style.color = COLORS.indigo;
+                  e.currentTarget.style.borderColor = COLORS.brandPrimary;
+                  e.currentTarget.style.color = COLORS.brandPrimary;
+                  e.currentTarget.style.transform = 'translateY(-3px)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.05)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
                   e.currentTarget.style.color = COLORS.textSecondary;
+                  e.currentTarget.style.transform = 'translateY(0)';
                 }}
               >
                 <Icon size={20} />
@@ -85,18 +90,18 @@ const Footer = () => {
         </div>
 
         <div>
-          <h4 style={{ fontWeight: 700, marginBottom: '24px' }}>Soluções</h4>
-          <a href="#" style={linkStyle} onMouseEnter={(e) => e.target.style.color = '#fff'} onMouseLeave={(e) => e.target.style.color = COLORS.textSecondary}>Cardápio Digital</a>
-          <a href="#" style={linkStyle} onMouseEnter={(e) => e.target.style.color = '#fff'} onMouseLeave={(e) => e.target.style.color = COLORS.textSecondary}>Agendamento</a>
-          <a href="#" style={linkStyle} onMouseEnter={(e) => e.target.style.color = '#fff'} onMouseLeave={(e) => e.target.style.color = COLORS.textSecondary}>IA de Atendimento</a>
-          <a href="#" style={linkStyle} onMouseEnter={(e) => e.target.style.color = '#fff'} onMouseLeave={(e) => e.target.style.color = COLORS.textSecondary}>SaaS Assistido</a>
+          <h4 style={{ fontWeight: 800, fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '32px', color: '#FFF' }}>Soluções High-End</h4>
+          <a href="#" style={linkStyle} onMouseEnter={(e) => e.target.style.color = COLORS.brandPrimary} onMouseLeave={(e) => e.target.style.color = COLORS.textSecondary}>Sistemas IA & CRM</a>
+          <a href="#" style={linkStyle} onMouseEnter={(e) => e.target.style.color = COLORS.brandPrimary} onMouseLeave={(e) => e.target.style.color = COLORS.textSecondary}>Agendamento Automático</a>
+          <a href="#" style={linkStyle} onMouseEnter={(e) => e.target.style.color = COLORS.brandPrimary} onMouseLeave={(e) => e.target.style.color = COLORS.textSecondary}>Cardápios Inteligentes</a>
+          <a href="#" style={linkStyle} onMouseEnter={(e) => e.target.style.color = COLORS.brandPrimary} onMouseLeave={(e) => e.target.style.color = COLORS.textSecondary}>Infra Multi-tenant</a>
         </div>
 
         <div>
-          <h4 style={{ fontWeight: 700, marginBottom: '24px' }}>Empresa</h4>
-          <a href="#" style={linkStyle} onMouseEnter={(e) => e.target.style.color = '#fff'} onMouseLeave={(e) => e.target.style.color = COLORS.textSecondary}>Sobre nós</a>
-          <a href="#" style={linkStyle} onMouseEnter={(e) => e.target.style.color = '#fff'} onMouseLeave={(e) => e.target.style.color = COLORS.textSecondary}>Resultados</a>
-          <a href="#" style={linkStyle} onMouseEnter={(e) => e.target.style.color = '#fff'} onMouseLeave={(e) => e.target.style.color = COLORS.textSecondary}>Carreiras</a>
+          <h4 style={{ fontWeight: 800, fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '32px', color: '#FFF' }}>Empresa</h4>
+          <a href="#" style={linkStyle} onMouseEnter={(e) => e.target.style.color = COLORS.brandPrimary} onMouseLeave={(e) => e.target.style.color = COLORS.textSecondary}>Visão Global</a>
+          <a href="#" style={linkStyle} onMouseEnter={(e) => e.target.style.color = COLORS.brandPrimary} onMouseLeave={(e) => e.target.style.color = COLORS.textSecondary}>Tecnologia</a>
+          <a href="#" style={linkStyle} onMouseEnter={(e) => e.target.style.color = COLORS.brandPrimary} onMouseLeave={(e) => e.target.style.color = COLORS.textSecondary}>Privacidade</a>
         </div>
 
         <div>

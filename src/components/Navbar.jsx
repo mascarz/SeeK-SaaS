@@ -26,9 +26,9 @@ const Navbar = () => {
     padding: `0 ${LAYOUT.paddingX}`,
     zIndex: 1000,
     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-    backgroundColor: scrolled ? 'rgba(7, 11, 20, 0.97)' : 'transparent',
+    backgroundColor: scrolled ? 'rgba(0, 0, 0, 0.95)' : 'transparent',
     backdropFilter: scrolled ? 'blur(20px)' : 'none',
-    borderBottom: scrolled ? `1px solid rgba(59, 130, 246, 0.1)` : '1px solid transparent',
+    borderBottom: scrolled ? `1px solid ${COLORS.brandPrimary}20` : '1px solid transparent',
   };
 
   const logoStyle = {
@@ -38,45 +38,48 @@ const Navbar = () => {
     textDecoration: 'none',
     color: '#fff',
     fontWeight: 900,
-    fontSize: '24px',
-    letterSpacing: '-0.02em',
+    fontSize: '26px',
+    letterSpacing: '-0.04em',
   };
 
   const logoBoxStyle = {
-    width: '40px',
-    height: '40px',
-    background: COLORS.gradientPrimary,
-    borderRadius: '10px',
+    width: '36px',
+    height: '36px',
+    background: COLORS.brandPrimary,
+    borderRadius: '8px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: '24px',
+    fontSize: '20px',
     fontWeight: 900,
-    color: '#fff',
+    color: '#000',
   };
 
   const linkStyle = {
     color: COLORS.textSecondary,
     textDecoration: 'none',
-    fontSize: '15px',
-    fontWeight: 500,
+    fontSize: '14px',
+    fontWeight: 600,
+    textTransform: 'uppercase',
+    letterSpacing: '0.05em',
     transition: 'color 0.2s ease',
     cursor: 'pointer',
   };
 
   const ctaButtonStyle = {
-    background: COLORS.gradientPrimary,
-    color: '#fff',
-    padding: '12px 24px',
-    borderRadius: '50px',
-    fontSize: '15px',
-    fontWeight: 700,
+    background: 'transparent',
+    color: COLORS.brandPrimary,
+    padding: '10px 24px',
+    borderRadius: '8px',
+    fontSize: '14px',
+    fontWeight: 800,
+    textTransform: 'uppercase',
+    letterSpacing: '0.05em',
     display: 'flex',
     alignItems: 'center',
     gap: '8px',
-    boxShadow: '0 4px 20px rgba(99, 102, 241, 0.35)',
-    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-    border: 'none',
+    border: `2px solid ${COLORS.brandPrimary}`,
+    transition: 'all 0.3s ease',
     cursor: 'pointer',
   };
 

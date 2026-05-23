@@ -8,7 +8,7 @@ const ROICalculator = () => {
   const currentRevenue = orders * ticket;
   const seekRevenue = currentRevenue * 1.4; // +40%
   const additionalGain = seekRevenue - currentRevenue;
-  const roi = (additionalGain / 69) * 100; // Assuming R$69 cost as base
+  const roi = (additionalGain / 1500) * 100; // Assuming R$1500 as corporate base cost
 
   const sectionStyle = {
     padding: `${LAYOUT.paddingY} ${LAYOUT.paddingX}`,
@@ -29,23 +29,24 @@ const ROICalculator = () => {
   };
 
   const cardStyle = {
-    padding: '32px',
+    padding: '40px',
     background: COLORS.bgCard,
     border: `1px solid ${COLORS.borderCard}`,
     borderRadius: '24px',
     display: 'flex',
     flexDirection: 'column',
-    gap: '24px',
+    gap: '32px',
   };
 
   const resultCardStyle = (isActive, color) => ({
-    padding: '24px',
+    padding: '32px',
     borderRadius: '16px',
-    background: isActive ? `${color}10` : 'rgba(255, 255, 255, 0.02)',
+    background: isActive ? `${color}08` : 'rgba(255, 255, 255, 0.02)',
     border: `1px solid ${isActive ? color : 'rgba(255, 255, 255, 0.05)'}`,
     display: 'flex',
     flexDirection: 'column',
     gap: '8px',
+    transition: 'all 0.3s ease'
   });
 
   const sliderStyle = (color) => ({
@@ -61,64 +62,60 @@ const ROICalculator = () => {
 
   return (
     <section id="roi" style={sectionStyle}>
-      <span style={{ ...TYPOGRAPHY.label, color: COLORS.bluePrimary, marginBottom: '16px' }}>Calculadora de ROI</span>
-      <h2 style={{ ...TYPOGRAPHY.sectionHeadline, textAlign: 'center' }}>Quanto o SeeK gera para o seu negócio?</h2>
+      <span style={{ ...TYPOGRAPHY.label, color: COLORS.brandPrimary, marginBottom: '16px' }}>Impacto Financeiro</span>
+      <h2 style={{ ...TYPOGRAPHY.sectionHeadline, textAlign: 'center' }}>Projeção de Escala & <br/> <span style={TYPOGRAPHY.textGradient}>[lucratividade.]</span></h2>
 
       <div className="roi-grid" style={containerStyle}>
         <div style={cardStyle}>
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
-              <span style={{ fontWeight: 600 }}>Pedidos/Agendamentos por mês</span>
-              <span style={{ color: COLORS.bluePrimary, fontWeight: 800, fontSize: '20px' }}>{orders}</span>
+              <span style={{ fontWeight: 600, color: COLORS.textSecondary }}>Operações Mensais</span>
+              <span style={{ color: COLORS.brandPrimary, fontWeight: 900, fontSize: '24px' }}>{orders}</span>
             </div>
             <input 
               type="range" 
-              min="20" 
-              max="500" 
+              min="50" 
+              max="2000" 
               value={orders} 
               onChange={(e) => setOrders(parseInt(e.target.value))}
-              style={sliderStyle(COLORS.bluePrimary)}
+              style={sliderStyle(COLORS.brandPrimary)}
             />
           </div>
 
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
-              <span style={{ fontWeight: 600 }}>Ticket médio R$</span>
-              <span style={{ color: COLORS.indigo, fontWeight: 800, fontSize: '20px' }}>R$ {ticket}</span>
+              <span style={{ fontWeight: 600, color: COLORS.textSecondary }}>Ticket Médio (R$)</span>
+              <span style={{ color: '#FFF', fontWeight: 900, fontSize: '24px' }}>R$ {ticket}</span>
             </div>
             <input 
               type="range" 
-              min="20" 
-              max="300" 
+              min="50" 
+              max="1000" 
               value={ticket} 
               onChange={(e) => setTicket(parseInt(e.target.value))}
-              style={sliderStyle(COLORS.indigo)}
+              style={sliderStyle('#FFFFFF')}
             />
           </div>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-            <div style={resultCardStyle(false)}>
-              <div style={{ fontSize: '13px', color: COLORS.textSecondary }}>Receita atual</div>
-              <div style={{ fontSize: '20px', fontWeight: 800 }}>R$ {currentRevenue.toLocaleString('pt-BR')}</div>
-            </div>
-            <div style={resultCardStyle(true, COLORS.success)}>
-              <div style={{ fontSize: '13px', color: COLORS.textSecondary }}>Com SeeK (+40%)</div>
-              <div style={{ fontSize: '20px', fontWeight: 800, color: COLORS.success }}>R$ {seekRevenue.toLocaleString('pt-BR')}</div>
-            </div>
+          <div style={resultCardStyle(false, '#FFF')}>
+            <span style={{ fontSize: '14px', color: COLORS.textSecondary, fontWeight: 600 }}>Faturamento Atual Estimado</span>
+            <span style={{ fontSize: '32px', fontWeight: 900, color: '#FFF' }}>R$ {currentRevenue.toLocaleString('pt-BR')}</span>
           </div>
 
-          <div style={{ ...resultCardStyle(true, COLORS.success), padding: '32px', textAlign: 'center' }}>
-            <div style={{ fontSize: '14px', color: COLORS.textSecondary, fontWeight: 600 }}>Ganho adicional por mês</div>
-            <div style={{ fontSize: '42px', fontWeight: 900, color: COLORS.success }}>R$ {additionalGain.toLocaleString('pt-BR')}</div>
-          </div>
-
-          <div style={resultCardStyle(false, COLORS.indigo)}>
+          <div style={resultCardStyle(true, COLORS.brandPrimary)}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div style={{ fontSize: '14px', color: COLORS.textSecondary }}>ROI do investimento</div>
-              <div style={{ fontSize: '28px', fontWeight: 900, color: COLORS.indigo }}>{roi.toFixed(0)}%</div>
+              <span style={{ fontSize: '14px', color: COLORS.brandPrimary, fontWeight: 800, textTransform: 'uppercase' }}>Faturamento com SeeK (+40%)</span>
+              <span style={{ background: COLORS.brandPrimary, color: '#000', padding: '2px 8px', borderRadius: '4px', fontSize: '11px', fontWeight: 900 }}>ALTA PERFORMANCE</span>
             </div>
+            <span style={{ fontSize: '40px', fontWeight: 900, color: '#FFF' }}>R$ {seekRevenue.toLocaleString('pt-BR')}</span>
+          </div>
+
+          <div style={{ textAlign: 'center', marginTop: '12px' }}>
+            <p style={{ color: COLORS.textSecondary, fontSize: '14px' }}>
+              Ao automatizar com IA, você reduz custos operacionais e <br/> aumenta a conversão em canais digitais.
+            </p>
           </div>
         </div>
       </div>

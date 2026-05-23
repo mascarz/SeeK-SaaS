@@ -9,7 +9,6 @@ const FinalCTA = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (email) {
-      // Notificação por e-mail via FormSubmit
       try {
         fetch("https://formsubmit.co/ajax/kauan.dev.full@gmail.com", {
           method: "POST",
@@ -19,154 +18,144 @@ const FinalCTA = () => {
           },
           body: JSON.stringify({
             email: email,
-            mensagem: "Novo lead interessado (CTA Final)",
-            origem: "Rodapé - SeeK Landing Page"
+            mensagem: "Novo lead interessado (CTA Final Global)",
+            origem: "Rodapé - SeeK Global"
           })
         });
       } catch (error) {
-        console.error("Erro ao enviar e-mail:", error);
+        console.error("Erro ao enviar:", error);
       }
 
       const phoneNumber = "5544988601067";
-       const message = encodeURIComponent(`Olá! Gostaria de criar meu site no SeeK. Meu e-mail é: ${email}`);
-       window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
-       setSubmitted(true);
-     }
-   };
+      const message = encodeURIComponent(`Olá! Quero escalar minha empresa com a SeeK. Meu e-mail é: ${email}`);
+      window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+      setSubmitted(true);
+    }
+  };
 
-   const sectionStyle = {
-     padding: `${LAYOUT.paddingY} ${LAYOUT.paddingX}`,
-     background: COLORS.bgSecondary,
-     position: 'relative',
-     overflow: 'hidden',
-     display: 'flex',
-     flexDirection: 'column',
-     alignItems: 'center',
-     textAlign: 'center',
-   };
+  const sectionStyle = {
+    padding: `${LAYOUT.paddingY} ${LAYOUT.paddingX}`,
+    background: COLORS.bgPrimary,
+    position: 'relative',
+    overflow: 'hidden',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center',
+  };
 
-   const glowStyle = {
-     position: 'absolute',
-     top: '50%',
-     left: '50%',
-     transform: 'translate(-50%, -50%)',
-     width: '1000px',
-     height: '1000px',
-     background: 'radial-gradient(circle, rgba(99, 102, 241, 0.08), transparent 70%)',
-     pointerEvents: 'none',
-   };
+  const glowStyle = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '1000px',
+    height: '1000px',
+    background: `radial-gradient(circle, ${COLORS.brandPrimary}10, transparent 70%)`,
+    pointerEvents: 'none',
+  };
 
-   const badgeStyle = (color) => ({
-     display: 'inline-flex',
-     alignItems: 'center',
-     gap: '8px',
-     padding: '8px 16px',
-     borderRadius: '50px',
-     background: `${color}10`,
-     border: `1px solid ${color}20`,
-     color: color,
-     fontSize: '14px',
-     fontWeight: 700,
-     marginBottom: '12px',
-   });
+  const badgeStyle = (color) => ({
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '8px',
+    padding: '8px 16px',
+    borderRadius: '50px',
+    background: `${color}15`,
+    border: `1px solid ${color}30`,
+    color: color,
+    fontSize: '14px',
+    fontWeight: 800,
+    marginBottom: '12px',
+    textTransform: 'uppercase',
+    letterSpacing: '0.05em'
+  });
 
-   const inputContainerStyle = {
-     display: 'flex',
-     gap: '12px',
-     background: 'rgba(255, 255, 255, 0.03)',
-     padding: '6px',
-     borderRadius: '60px',
-     border: '1px solid rgba(255, 255, 255, 0.1)',
-     maxWidth: '500px',
-     width: '100%',
-     marginTop: '40px',
-   };
+  const inputContainerStyle = {
+    display: 'flex',
+    gap: '12px',
+    background: 'rgba(255, 255, 255, 0.05)',
+    padding: '8px',
+    borderRadius: '16px',
+    border: '1px solid rgba(255, 255, 255, 0.1)',
+    maxWidth: '600px',
+    width: '100%',
+    marginTop: '48px',
+    flexWrap: 'wrap'
+  };
 
-   const inputStyle = {
-     flex: 1,
-     background: 'transparent',
-     border: 'none',
-     color: '#fff',
-     padding: '0 24px',
-     fontSize: '16px',
-   };
+  const inputStyle = {
+    flex: 1,
+    background: 'transparent',
+    border: 'none',
+    color: '#fff',
+    padding: '12px 24px',
+    fontSize: '16px',
+    minWidth: '250px',
+    outline: 'none'
+  };
 
-   const submitButtonStyle = {
-     background: COLORS.gradientPrimary,
-     color: '#fff',
-     padding: '14px 28px',
-     borderRadius: '50px',
-     fontWeight: 700,
-     fontSize: '16px',
-     boxShadow: COLORS.buttonShadow,
-     transition: 'transform 0.2s ease',
-   };
+  const submitButtonStyle = {
+    background: COLORS.brandPrimary,
+    color: '#fff',
+    padding: '16px 32px',
+    borderRadius: '12px',
+    fontWeight: 800,
+    fontSize: '16px',
+    border: 'none',
+    cursor: 'pointer',
+    boxShadow: COLORS.buttonShadow,
+    transition: 'all 0.3s ease'
+  };
 
-   const whatsappButtonStyle = {
-     display: 'flex',
-     alignItems: 'center',
-     justifyContent: 'center',
-     gap: '12px',
-     background: COLORS.whatsapp,
-     color: '#fff',
-     padding: '18px 40px',
-     borderRadius: '50px',
-     fontWeight: 800,
-     fontSize: '18px',
-     marginTop: '24px',
-     boxShadow: '0 8px 28px rgba(37, 211, 102, 0.35)',
-     transition: 'transform 0.2s ease',
-   };
+  return (
+    <section id="contato" style={sectionStyle}>
+      <div style={glowStyle} />
+      
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <div style={badgeStyle(COLORS.brandPrimary)}>Ready for Scale</div>
+        <h2 style={{ ...TYPOGRAPHY.sectionHeadline, marginBottom: '24px' }}>
+          Sua empresa pronta para o <br/> <span style={TYPOGRAPHY.textGradient}>[próximo nível.]</span>
+        </h2>
+        <p style={{ ...TYPOGRAPHY.body, color: COLORS.textSecondary, maxWidth: '600px', margin: '0 auto', fontSize: '1.1rem' }}>
+          Junte-se às empresas que já estão automatizando processos e escalando resultados com tecnologia de ponta.
+        </p>
 
-   return (
-     <section style={sectionStyle}>
-       <div style={glowStyle} />
-       
-       <div style={{ zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
-         <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '32px' }}>
-           <div style={badgeStyle(COLORS.success)}><Shield size={16} /> 7 dias grátis, sem cartão</div>
-           <div style={badgeStyle(COLORS.bluePrimary)}><Clock size={16} /> Setup em até 24h pela nossa equipe</div>
-         </div>
+        {!submitted ? (
+          <form onSubmit={handleSubmit} style={inputContainerStyle}>
+            <input 
+              type="email" 
+              placeholder="E-mail corporativo" 
+              required 
+              style={inputStyle}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <button 
+              type="submit" 
+              style={submitButtonStyle}
+              onMouseEnter={(e) => e.target.style.transform = 'translateY(-2px)'}
+              onMouseLeave={(e) => e.target.style.transform = 'translateY(0)'}
+            >
+              Começar Agora
+            </button>
+          </form>
+        ) : (
+          <div style={{ ...badgeStyle(COLORS.success), marginTop: '48px', padding: '16px 24px', fontSize: '18px' }}>
+            <CheckCircle size={24} /> Pronto! Nossa equipe entrará em contato.
+          </div>
+        )}
 
-         <h2 style={{ ...TYPOGRAPHY.sectionHeadline, maxWidth: '900px', marginBottom: '32px' }}>
-           Cada dia sem o SeeK é um cliente <span style={{ background: 'linear-gradient(135deg, #EF4444, #F97316)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>respondido pelo concorrente.</span>
-         </h2>
-
-         {!submitted ? (
-           <form onSubmit={handleSubmit} style={inputContainerStyle}>
-             <input 
-               type="email" 
-               placeholder="Seu melhor e-mail" 
-               style={inputStyle}
-               value={email}
-               onChange={(e) => setEmail(e.target.value)}
-               required
-             />
-             <button type="submit" style={submitButtonStyle} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
-               Criar meu Site Agora →
-             </button>
-           </form>
-         ) : (
-           <div style={{ ...badgeStyle(COLORS.success), marginTop: '40px', padding: '16px 24px', fontSize: '18px' }}>
-             <CheckCircle size={24} /> Pronto! Nossa equipe entrará em contato.
-           </div>
-         )}
-
-         <div style={{ display: 'flex', alignItems: 'center', gap: '20px', margin: '32px 0', color: COLORS.textTertiary, fontWeight: 700 }}>
-           <div style={{ height: '1px', width: '40px', background: 'rgba(255,255,255,0.1)' }} />
-           ou
-           <div style={{ height: '1px', width: '40px', background: 'rgba(255,255,255,0.1)' }} />
-         </div>
-
-         <a href="https://wa.me/5544988601067" target="_blank" rel="noopener noreferrer" style={whatsappButtonStyle} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
-           <MessageCircle size={24} fill="currentColor" />
-           Falar no WhatsApp Agora
-         </a>
-
-        <div style={{ marginTop: '48px', display: 'flex', gap: '24px', flexWrap: 'wrap', justifyContent: 'center' }}>
-          {['✓ 7 dias grátis', '✓ Sem cartão', '✓ Setup 24h', '✓ Cancele quando quiser'].map((text, i) => (
-            <span key={i} style={{ fontSize: '14px', color: COLORS.textTertiary, fontWeight: 500 }}>{text}</span>
-          ))}
+        <div style={{ marginTop: '48px', display: 'flex', gap: '40px', justifyContent: 'center', opacity: 0.6, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', fontWeight: 600 }}>
+            <Shield size={18} color={COLORS.brandPrimary} /> Segurança Enterprise
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', fontWeight: 600 }}>
+            <Clock size={18} color={COLORS.brandPrimary} /> Setup em Recorde
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', fontWeight: 600 }}>
+            <CheckCircle size={18} color={COLORS.brandPrimary} /> 100% Personalizado
+          </div>
         </div>
       </div>
     </section>

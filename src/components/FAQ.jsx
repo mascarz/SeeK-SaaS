@@ -6,12 +6,11 @@ const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const faqs = [
-    { q: 'Preciso saber programar ou mexer em tecnologia?', a: 'Não! O SeeK é um "SaaS Assistido". Nossa equipe faz toda a configuração inicial, personalização do cardápio/agenda e treinamento da IA para você. Você só precisa aprovar o resultado final.' },
-    { q: 'Quanto tempo leva para ficar pronto?', a: 'Após o envio das suas informações, nossa equipe entrega sua plataforma completa e pronta para vender em até 24 horas úteis.' },
-    { q: 'A IA atende como um humano de verdade?', a: 'Sim! Nossa IA é treinada com os dados específicos do seu negócio, mantendo o tom de voz da sua marca e sendo capaz de tirar dúvidas, fazer sugestões de venda (upsell) e fechar pedidos/agendamentos.' },
-    { q: 'Funciona para salão, clínica e lanchonete?', a: 'Com certeza. O SeeK possui módulos específicos para cada nicho, adaptando a jornada do cliente seja para um pedido de delivery ou para um agendamento recorrente.' },
-    { q: 'Posso cancelar quando quiser?', a: 'Sim, não temos contrato de fidelidade nos planos mensais. No plano anual, você garante o desconto mas também pode cancelar a renovação a qualquer momento.' },
-    { q: 'Como funciona o suporte depois do setup?', a: 'Oferecemos suporte humano 24/7. Além disso, dependendo do seu plano, fazemos ajustes mensais gratuitos para garantir que sua plataforma esteja sempre atualizada.' },
+    { q: 'Como funciona o prazo de 2 a 6 semanas?', a: 'O prazo varia conforme a complexidade: 2 a 4 semanas para MVPs funcionais e 4 a 6 semanas para ecossistemas completos com arquitetura multi-tenant e integrações globais.' },
+    { q: 'A IA é realmente personalizada?', a: 'Sim. Treinamos modelos de IA generativa com o conhecimento específico da sua empresa, tom de voz e regras de negócio para garantir um atendimento humanizado e de alta conversão.' },
+    { q: 'O sistema suporta pagamentos internacionais?', a: 'Sim. Implementamos gateways de pagamento globais com suporte a múltiplas moedas e métodos de pagamento locais, integrados diretamente ao fluxo de checkout.' },
+    { q: 'Como é feito o monitoramento 24/7?', a: 'Utilizamos infraestrutura em nuvem escalável com monitoramento de performance em tempo real, garantindo 99.9% de uptime e resposta imediata a qualquer instabilidade.' },
+    { q: 'Posso integrar com meu CRM atual?', a: 'Sim. Nossa arquitetura é via API-First, permitindo integração fluida com Salesforce, HubSpot, RD Station e outros CRMs líderes de mercado.' },
   ];
 
   const sectionStyle = {
@@ -24,7 +23,7 @@ const FAQ = () => {
 
   const containerStyle = {
     width: '100%',
-    maxWidth: '780px',
+    maxWidth: '800px',
     marginTop: '60px',
     display: 'flex',
     flexDirection: 'column',
@@ -32,9 +31,9 @@ const FAQ = () => {
   };
 
   const faqItemStyle = (isActive) => ({
-    background: isActive ? 'rgba(99, 102, 241, 0.04)' : 'rgba(255, 255, 255, 0.02)',
-    border: `1px solid ${isActive ? 'rgba(99, 102, 241, 0.35)' : 'rgba(255, 255, 255, 0.05)'}`,
-    borderRadius: '20px',
+    background: isActive ? 'rgba(255, 107, 0, 0.04)' : 'rgba(255, 255, 255, 0.02)',
+    border: `1px solid ${isActive ? COLORS.brandPrimary : 'rgba(255, 255, 255, 0.08)'}`,
+    borderRadius: '16px',
     overflow: 'hidden',
     transition: 'all 0.3s ease',
   });
@@ -47,6 +46,7 @@ const FAQ = () => {
     cursor: 'pointer',
     fontWeight: 700,
     fontSize: '18px',
+    color: '#fff'
   };
 
   const answerStyle = (isActive) => ({
@@ -57,11 +57,12 @@ const FAQ = () => {
     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
     color: COLORS.textSecondary,
     lineHeight: 1.6,
+    fontSize: '15px'
   });
 
   return (
     <section id="faq" style={sectionStyle}>
-      <span style={{ ...TYPOGRAPHY.label, color: COLORS.indigo, marginBottom: '16px' }}>Dúvidas Comuns</span>
+      <span style={{ ...TYPOGRAPHY.label, color: COLORS.brandPrimary, marginBottom: '16px' }}>Esclarecimentos</span>
       <h2 style={{ ...TYPOGRAPHY.sectionHeadline, textAlign: 'center' }}>Perguntas Frequentes</h2>
 
       <div style={containerStyle}>
@@ -74,7 +75,7 @@ const FAQ = () => {
                 style={{ 
                   transition: 'transform 0.4s ease', 
                   transform: activeIndex === i ? 'rotate(180deg)' : 'rotate(0deg)',
-                  color: activeIndex === i ? COLORS.indigo : COLORS.textTertiary
+                  color: activeIndex === i ? COLORS.brandPrimary : COLORS.textTertiary
                 }} 
               />
             </div>

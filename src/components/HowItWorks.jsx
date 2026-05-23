@@ -1,13 +1,13 @@
 import React from 'react';
 import { COLORS, TYPOGRAPHY, LAYOUT } from '../constants';
-import { CheckCircle2, Zap } from 'lucide-react';
+import { CheckCircle2, Zap, ArrowRight } from 'lucide-react';
 
 const HowItWorks = () => {
   const steps = [
-    { title: 'Você fala com nossa equipe', tag: '30 min', desc: 'Entendemos seu negócio e suas necessidades específicas em uma conversa rápida.' },
-    { title: 'Configuramos tudo por você', tag: '24h', desc: 'Nossos especialistas criam seu cardápio, agenda e treinam sua IA personalizada.' },
-    { title: 'Você recebe seu link pronto', tag: 'Pronto!', desc: 'Sua plataforma vai ao ar com sua marca, cores e produtos, tudo validado.' },
-    { title: 'A IA vende enquanto você descansa', tag: '24/7', desc: 'Atendimento automatizado que escala seu negócio sem aumentar sua carga de trabalho.' },
+    { title: 'Diagnóstico & Estratégia', tag: 'Discovery', desc: 'Mapeamos os gargalos da sua operação e definimos o fluxo ideal de automação.' },
+    { title: 'Desenvolvimento & IA', tag: 'Building', desc: 'Nossa equipe configura sua infraestrutura, CRM e treina sua IA com os dados da empresa.' },
+    { title: 'Deploy & Integração', tag: 'Live', desc: 'Lançamento do sistema com integração total aos seus canais de atendimento e pagamentos.' },
+    { title: 'Escala Monitorada', tag: '24/7', desc: 'Monitoramento contínuo e ajustes baseados em dados para garantir crescimento sem limites.' },
   ];
 
   const sectionStyle = {
@@ -41,22 +41,22 @@ const HowItWorks = () => {
     top: '40px',
     bottom: 0,
     width: '2px',
-    background: 'rgba(99, 102, 241, 0.15)',
+    background: `${COLORS.brandPrimary}20`,
   };
 
   const circleStyle = (isActive) => ({
     width: '42px',
     height: '42px',
-    borderRadius: '50%',
-    background: isActive ? COLORS.gradientPrimary : 'rgba(99, 102, 241, 0.12)',
-    border: isActive ? 'none' : `2px solid rgba(99, 102, 241, 0.3)`,
+    borderRadius: '12px',
+    background: isActive ? COLORS.brandPrimary : 'rgba(255, 255, 255, 0.05)',
+    border: `1px solid ${isActive ? COLORS.brandPrimary : 'rgba(255, 255, 255, 0.1)'}`,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: isActive ? '#fff' : COLORS.indigo,
-    fontWeight: 700,
+    color: isActive ? '#000' : COLORS.brandPrimary,
+    fontWeight: 800,
     zIndex: 1,
-    boxShadow: isActive ? '0 0 20px rgba(99, 102, 241, 0.4)' : 'none',
+    boxShadow: isActive ? COLORS.buttonShadow : 'none',
   });
 
   const tagStyle = {
@@ -64,110 +64,102 @@ const HowItWorks = () => {
     borderRadius: '6px',
     fontSize: '11px',
     fontWeight: 800,
-    background: 'rgba(59, 130, 246, 0.1)',
-    color: COLORS.bluePrimary,
+    background: 'rgba(255, 107, 0, 0.1)',
+    color: COLORS.brandPrimary,
     textTransform: 'uppercase',
-  };
-
-  const analyticsPanelStyle = {
-    background: COLORS.bgPrimary,
-    padding: '40px',
-    borderRadius: '32px',
-    border: '1px solid rgba(59, 130, 246, 0.15)',
-    boxShadow: '0 40px 80px rgba(0,0,0,0.3)',
+    letterSpacing: '0.05em'
   };
 
   const ctaButtonStyle = {
-    background: COLORS.gradientPrimary,
-    color: '#fff',
+    background: 'transparent',
+    color: COLORS.brandPrimary,
     padding: '16px 32px',
-    borderRadius: '50px',
-    fontWeight: 700,
-    fontSize: '18px',
+    borderRadius: '12px',
+    fontWeight: 800,
+    fontSize: '16px',
     display: 'flex',
     alignItems: 'center',
     gap: '12px',
-    boxShadow: COLORS.buttonShadow,
-    transition: 'transform 0.2s ease',
+    border: `2px solid ${COLORS.brandPrimary}`,
+    transition: 'all 0.3s ease',
     marginTop: '40px',
     width: 'fit-content',
+    cursor: 'pointer',
+    textTransform: 'uppercase',
+    letterSpacing: '0.05em'
   };
 
   const handleWhatsAppClick = () => {
     const phoneNumber = "5544988601067";
-    const message = encodeURIComponent("Olá! Vi como o SeeK funciona e gostaria de implementar no meu negócio.");
+    const message = encodeURIComponent("Olá! Gostaria de entender mais sobre o fluxo de implementação global da SeeK.");
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
 
   return (
     <section id="como-funciona" style={sectionStyle}>
-      <span style={{ ...TYPOGRAPHY.label, color: COLORS.indigo, marginBottom: '16px' }}>Assistido, Não Abandonado</span>
+      <span style={{ ...TYPOGRAPHY.label, color: COLORS.brandPrimary, marginBottom: '16px' }}>Metodologia Ágil</span>
       <h2 style={{ ...TYPOGRAPHY.sectionHeadline, textAlign: 'center', maxWidth: '800px' }}>
-        Nossa equipe faz o trabalho pesado. <span style={TYPOGRAPHY.textGradient}>[Você só aprova.]</span>
+        Do conceito à escala global em <br/> <span style={TYPOGRAPHY.textGradient}>[recorde de tempo.]</span>
       </h2>
 
       <div className="how-it-works-grid" style={containerStyle}>
-        <div className="steps-column">
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
           {steps.map((step, i) => (
-            <div key={i} style={{ ...stepItemStyle, paddingBottom: i === steps.length - 1 ? 0 : '40px' }}>
+            <div key={i} style={stepItemStyle}>
               {i !== steps.length - 1 && <div style={lineStyle} />}
-              <div style={circleStyle(i === 0)}>0{i + 1}</div>
-              <div style={{ flex: 1 }}>
+              <div style={circleStyle(true)}>
+                {i + 1}
+              </div>
+              <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-                  <h3 style={{ ...TYPOGRAPHY.subHeadline, fontSize: '20px' }}>{step.title}</h3>
+                  <h3 style={{ ...TYPOGRAPHY.subHeadline, color: '#fff', fontSize: '20px' }}>{step.title}</h3>
                   <span style={tagStyle}>{step.tag}</span>
                 </div>
-                <p style={{ ...TYPOGRAPHY.body, color: COLORS.textSecondary }}>{step.desc}</p>
+                <p style={{ ...TYPOGRAPHY.body, color: COLORS.textSecondary, fontSize: '15px', lineHeight: 1.6 }}>
+                  {step.desc}
+                </p>
               </div>
             </div>
           ))}
           <button 
             onClick={handleWhatsAppClick}
-            style={ctaButtonStyle} 
-            onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'} 
-            onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+            style={ctaButtonStyle}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(255, 107, 0, 0.05)';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'transparent';
+              e.currentTarget.style.transform = 'translateY(0)';
+            }}
           >
-            Quero o SeeK no meu negócio →
+            Falar com Especialista <ArrowRight size={20} />
           </button>
         </div>
 
-        <div className="analytics-column">
-          <div style={analyticsPanelStyle}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '32px' }}>
-              <div>
-                <div style={{ fontSize: '14px', color: COLORS.textSecondary, marginBottom: '4px' }}>Receita Total (Mês)</div>
-                <div style={{ fontSize: '32px', fontWeight: 900, display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  R$ 8.492 <span style={{ fontSize: '16px', color: COLORS.success, background: 'rgba(16, 185, 129, 0.1)', padding: '4px 8px', borderRadius: '6px' }}>▲ +41%</span>
-                </div>
-              </div>
-              <div style={{ padding: '10px', background: 'rgba(99, 102, 241, 0.1)', borderRadius: '12px' }}>
-                <Zap size={24} color={COLORS.indigo} />
-              </div>
+        <div style={{ 
+          background: 'rgba(255, 255, 255, 0.02)', 
+          padding: '48px', 
+          borderRadius: '32px', 
+          border: '1px solid rgba(255, 255, 255, 0.05)',
+          position: 'relative'
+        }}>
+          <div style={{ position: 'absolute', top: '24px', right: '24px' }}>
+            <Zap size={24} color={COLORS.brandPrimary} />
+          </div>
+          <h3 style={{ ...TYPOGRAPHY.subHeadline, color: '#fff', marginBottom: '24px', fontSize: '24px' }}>Timeline de Entrega</h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <div style={{ padding: '16px', borderRadius: '12px', background: 'rgba(255,107,0,0.05)', border: `1px solid ${COLORS.brandPrimary}30` }}>
+              <div style={{ fontSize: '12px', fontWeight: 800, color: COLORS.brandPrimary, marginBottom: '4px' }}>SEMANA 1-2</div>
+              <div style={{ fontWeight: 700, color: '#fff' }}>MVP & Fluxos Core</div>
             </div>
-
-            <div style={{ display: 'flex', alignItems: 'flex-end', gap: '8px', height: '120px', marginBottom: '32px' }}>
-              {[0.4, 0.6, 0.3, 0.8, 0.5, 0.7, 0.4, 0.9, 0.6, 0.8, 0.5, 1.0].map((h, i) => (
-                <div key={i} style={{ 
-                  flex: 1, 
-                  height: `${h * 100}%`, 
-                  background: i === 11 ? COLORS.gradientPrimary : 'rgba(99, 102, 241, 0.2)',
-                  borderRadius: '4px 4px 0 0'
-                }} />
-              ))}
+            <div style={{ padding: '16px', borderRadius: '12px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <div style={{ fontSize: '12px', fontWeight: 800, color: COLORS.textTertiary, marginBottom: '4px' }}>SEMANA 3-4</div>
+              <div style={{ fontWeight: 700, color: '#fff' }}>Integrações & IA Training</div>
             </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-              {[
-                { label: 'Pedidos Hoje', value: '47' },
-                { label: 'Ticket Médio', value: 'R$ 68,50' },
-                { label: 'Taxa Conv. IA', value: '78%', color: COLORS.success },
-                { label: 'Clientes Ativos', value: '1.240' },
-              ].map((kpi, i) => (
-                <div key={i} style={{ padding: '16px', borderRadius: '16px', background: 'rgba(255, 255, 255, 0.02)', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
-                  <div style={{ fontSize: '12px', color: COLORS.textSecondary, marginBottom: '4px' }}>{kpi.label}</div>
-                  <div style={{ fontWeight: 800, fontSize: '18px', color: kpi.color || '#fff' }}>{kpi.value}</div>
-                </div>
-              ))}
+            <div style={{ padding: '16px', borderRadius: '12px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <div style={{ fontSize: '12px', fontWeight: 800, color: COLORS.textTertiary, marginBottom: '4px' }}>SEMANA 5-6</div>
+              <div style={{ fontWeight: 700, color: '#fff' }}>Escala & Global Launch</div>
             </div>
           </div>
         </div>
@@ -175,8 +167,7 @@ const HowItWorks = () => {
 
       <style>{`
         @media (max-width: 1023px) {
-          .how-it-works-grid { grid-template-columns: 1fr !important; gap: 60px !important; }
-          .analytics-column { order: -1; }
+          .how-it-works-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
         }
       `}</style>
     </section>

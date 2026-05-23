@@ -4,12 +4,12 @@ import { COLORS, TYPOGRAPHY, LAYOUT } from '../constants';
 
 const Testimonials = () => {
   const testimonials = [
-    { name: 'Ricardo Santos', role: 'Dono de Hamburgueria', metric: '+67% de pedidos', text: 'O SeeK mudou o jogo. Antes eu perdia metade das mensagens no Zap, hoje a IA resolve tudo e eu só foco na cozinha.' },
-    { name: 'Ana Oliveira', role: 'Proprietária de Salão', metric: 'Zero faltas na agenda', text: 'Os lembretes automáticos e o agendamento sem eu precisar responder nada economizaram 4h do meu dia.' },
-    { name: 'Dr. Marcos Vale', role: 'Diretor de Clínica', metric: 'R$12k/mês a mais', text: 'A facilidade do paciente agendar sozinho aumentou nossa conversão drasticamente. Recuperamos o investimento no primeiro mês.' },
-    { name: 'Juliana Paes', role: 'Gerente de E-commerce', metric: 'Setup em 18h', text: 'Impressionada com a velocidade. Em menos de um dia já estava tudo no ar, configurado pela equipe do SeeK.' },
-    { name: 'Felipe Costa', role: 'Dono de Pizzaria', metric: '3x mais conversões', text: 'O cardápio é muito intuitivo. Meus clientes adoraram a experiência e estão pedindo com muito mais frequência.' },
-    { name: 'Beatriz Lima', role: 'Esteticista', metric: '+45% receita mensal', text: 'A IA atende tão bem que os clientes acham que sou eu. Vende pacotes e faz upsell de forma brilhante.' },
+    { name: 'Ricardo Santos', role: 'CEO Tech Logistics', metric: '+67% Efficiency', text: 'A implementação do CRM com IA da SeeK transformou nossa logística. Automatizamos 80% do atendimento e escalamos sem aumentar o headcount.' },
+    { name: 'Ana Oliveira', role: 'Diretora Regional Beauty Group', metric: 'Global Scalability', text: 'O sistema multi-tenant permitiu gerenciar todas as nossas unidades globais em um só dashboard. O agendamento automático é impecável.' },
+    { name: 'Dr. Marcos Vale', role: 'Founder HealthCare Plus', metric: 'ROI 12x First Month', text: 'A precisão da IA no atendimento aos pacientes elevou nosso padrão de serviço. É uma tecnologia indispensável para escala corporativa.' },
+    { name: 'Juliana Paes', role: 'Head of Growth Retail Global', metric: 'Setup 2 Weeks', text: 'Impressionada com a velocidade e qualidade da entrega. Em duas semanas tínhamos um ecossistema completo integrado ao nosso CRM.' },
+    { name: 'Felipe Costa', role: 'Operations Manager FoodChain', metric: 'High-Performance UX', text: 'Nossos canais digitais agora operam em alta performance. A experiência do usuário é fluida e focada em conversão.' },
+    { name: 'Beatriz Lima', role: 'Business Owner Global Wellness', metric: '+45% Annual Revenue', text: 'A automação da SeeK nos permitiu focar na estratégia enquanto a IA cuida de toda a operação de agendamentos e vendas.' },
   ];
 
   const sectionStyle = {
@@ -34,30 +34,32 @@ const Testimonials = () => {
     padding: '40px',
     background: COLORS.bgCard,
     border: `1px solid ${COLORS.borderCard}`,
-    borderRadius: '32px',
+    borderRadius: '24px',
     textAlign: 'left',
     transition: 'all 0.3s ease',
     display: 'flex',
     flexDirection: 'column',
-    gap: '20px',
+    gap: '24px',
   };
 
   const metricBadgeStyle = {
     padding: '6px 12px',
     borderRadius: '8px',
-    background: 'rgba(59, 130, 246, 0.1)',
-    border: '1px solid rgba(59, 130, 246, 0.2)',
-    color: COLORS.bluePrimary,
+    background: 'rgba(255, 107, 0, 0.1)',
+    border: `1px solid ${COLORS.brandPrimary}30`,
+    color: COLORS.brandPrimary,
     fontSize: '13px',
-    fontWeight: 700,
+    fontWeight: 800,
     width: 'fit-content',
+    textTransform: 'uppercase',
+    letterSpacing: '0.05em'
   };
 
   return (
     <section id="resultados" style={sectionStyle}>
-      <span style={{ ...TYPOGRAPHY.label, color: COLORS.indigo, marginBottom: '16px' }}>Resultados Reais</span>
-      <h2 style={{ ...TYPOGRAPHY.sectionHeadline, maxWidth: '800px' }}>
-        +800 negócios que pararam de improvisar.
+      <span style={{ ...TYPOGRAPHY.label, color: COLORS.brandPrimary, marginBottom: '16px' }}>Impacto Comprovado</span>
+      <h2 style={{ ...TYPOGRAPHY.sectionHeadline, maxWidth: '900px' }}>
+        Empresas que escalaram com o <br/> <span style={TYPOGRAPHY.textGradient}>[padrão SeeK.]</span>
       </h2>
 
       <div style={gridStyle}>
@@ -66,27 +68,29 @@ const Testimonials = () => {
             key={i} 
             style={cardStyle}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = 'rgba(99, 102, 241, 0.25)';
+              e.currentTarget.style.borderColor = COLORS.brandPrimary;
+              e.currentTarget.style.transform = 'translateY(-4px)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.borderColor = COLORS.borderCard;
+              e.currentTarget.style.transform = 'translateY(0)';
             }}
           >
-            <div style={{ color: COLORS.stars, display: 'flex', gap: '4px' }}>
+            <div style={{ color: COLORS.brandPrimary, display: 'flex', gap: '4px' }}>
               {[1, 2, 3, 4, 5].map(star => <Star key={star} size={16} fill="currentColor" />)}
             </div>
             
-            <p style={{ ...TYPOGRAPHY.body, color: 'rgba(255, 255, 255, 0.75)', fontSize: '16px', fontStyle: 'italic', flex: 1 }}>
+            <p style={{ ...TYPOGRAPHY.body, color: COLORS.textSecondary, fontSize: '15px', fontStyle: 'italic', flex: 1, lineHeight: 1.6 }}>
               "{t.text}"
             </p>
 
             <div style={metricBadgeStyle}>{t.metric}</div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', paddingTop: '20px', borderTop: '1px solid rgba(255, 255, 255, 0.05)' }}>
-              <div style={{ width: '48px', height: '48px', borderRadius: '50%', border: `2px solid rgba(99, 102, 241, 0.3)`, background: `url(https://i.pravatar.cc/100?img=${i+20}) center/cover` }} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', paddingTop: '24px', borderTop: '1px solid rgba(255, 255, 255, 0.05)' }}>
+              <div style={{ width: '48px', height: '48px', borderRadius: '12px', border: `1px solid ${COLORS.brandPrimary}40`, background: `url(https://i.pravatar.cc/100?img=${i+20}) center/cover` }} />
               <div>
-                <div style={{ fontWeight: 700, fontSize: '15px' }}>{t.name}</div>
-                <div style={{ fontSize: '13px', color: COLORS.textTertiary }}>{t.role}</div>
+                <div style={{ fontWeight: 800, fontSize: '15px', color: '#fff' }}>{t.name}</div>
+                <div style={{ fontSize: '12px', color: COLORS.textTertiary, textTransform: 'uppercase', letterSpacing: '0.05em', marginTop: '2px' }}>{t.role}</div>
               </div>
             </div>
           </div>
